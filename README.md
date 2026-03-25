@@ -1,5 +1,8 @@
 # 🏦 Bank Management System - Nexus Banking
 
+![Sơ đồ Cơ sở dữ liệu Ngân hàng](./Customer%20Account%20Management-2026-03-25-075144.png)
+> *Hình 1: Sơ đồ Thực thể Liên kết (ER Diagram) biểu diễn kiến trúc cơ sở dữ liệu cốt lõi của Hệ thống Nexus Banking. Bảng thiết kế thể hiện cấu hình Data Model tuân thủ chặt chẽ chuẩn 3NF, đi kèm hệ khóa chính bảo mật UUID kết nối xuyên suốt các bảng. Đặc biệt, có đầy đủ các ghi chú về Tùy chọn Ràng buộc Toàn vẹn (như `CHECK balance >= 0`)*
+
 Dự án Hệ thống Quản trị CSDL Ngân hàng, được thiết kế chuyên nghiệp chuyên sâu vào xử lý toàn vẹn dữ liệu (Data Integrity), quy trình tự động và ứng dụng Web nội bộ theo chuẩn Premium.
 
 ## 🌟 Tổng quan Pipeline (Kiến trúc Hệ thống)
