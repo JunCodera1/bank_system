@@ -3,7 +3,7 @@ import pool from '@/lib/db';
 
 export async function POST(request: Request) {
     try {
-        const { account_number, amount } = await request.json();
+        const { account_number, amount, teller_id } = await request.json();
 
         if (!account_number || !amount) {
             return NextResponse.json({ success: false, error: 'Thiếu thông tin nạp tiền' }, { status: 400 });
@@ -17,11 +17,11 @@ export async function POST(request: Request) {
 
         const targetAccountId = accResult.rows[0].account_id;
 
-        // Insert giao dịch nạp tiền, Trigger sẽ lo việc cộng balance
+        // Insert giao dịch nạp tiền, Trigger sẽ lo việc cộng balance khi trạng thái = COMPLETED
         await pool.query(
-            `INSERT INTO Transactions (to_account_id, amount, transaction_type, description) 
-       VALUES ($1, $2, 'DEPOSIT', 'Nạp tiền mặt từ Web App')`,
-            [targetAccountId, amount]
+            `INSERT INTO Transactions (teller_id, to_account_id, amount, transaction_type, status, description) 
+       VALUES ($1, $2, $3, 'DEPOSIT', 'COMPLETED', 'Nạp tiền mặt từ Web App')`,
+            [teller_id || '99999999-9999-9999-9999-999999999999', targetAccountId, amount]
         );
 
         return NextResponse.json({ success: true, message: 'Nạp tiền thành công!' });

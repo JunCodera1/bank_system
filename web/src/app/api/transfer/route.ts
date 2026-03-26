@@ -3,16 +3,16 @@ import pool from '@/lib/db';
 
 export async function POST(request: Request) {
     try {
-        const { from_account, to_account, amount } = await request.json();
+        const { from_account, to_account, amount, teller_id } = await request.json();
 
         if (!from_account || !to_account || !amount) {
             return NextResponse.json({ success: false, error: 'Thiếu thông tin chuyển khoản' }, { status: 400 });
         }
 
-        // Gọi Stored Function fn_transfer_money
+        // Gọi Stored Function fn_transfer_money với truyền mock admin teller_id
         const result = await pool.query(
-            'SELECT fn_transfer_money($1, $2, $3) as message',
-            [from_account, to_account, amount]
+            'SELECT fn_transfer_money($1, $2, $3, $4) as message',
+            [from_account, to_account, amount, teller_id || '99999999-9999-9999-9999-999999999999']
         );
 
         return NextResponse.json({ success: true, message: result.rows[0].message });
