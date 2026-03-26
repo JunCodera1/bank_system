@@ -297,6 +297,8 @@ export default function Home() {
           <form onSubmit={handleRegister} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', flex: 1 }}>
             <div><label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Họ và tên</label><input type="text" value={regName} onChange={e => setRegName(e.target.value)} required /></div>
             <div><label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Số điện thoại</label><input type="text" value={regPhone} onChange={e => setRegPhone(e.target.value)} required /></div>
+            <div><label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Email</label><input type="email" value={regEmail} onChange={e => setRegEmail(e.target.value)} required /></div>
+            <div><label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Địa chỉ</label><input type="text" value={regAddress} onChange={e => setRegAddress(e.target.value)} /></div>
             <div>
               <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>Loại thẻ</label>
               <select value={regType} onChange={e => setRegType(e.target.value)} style={{ width: '100%', padding: '0.75rem', borderRadius: '12px', border: '1px solid var(--surface-border)', background: 'rgba(15, 23, 42, 0.6)', color: 'white' }} required>
